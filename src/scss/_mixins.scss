@@ -1,0 +1,19 @@
+@mixin fr() {
+  float: left;
+}
+
+@mixin fl() {
+  float: left;
+}
+
+@mixin clear() {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+@mixin clearfix {
+  &::after, &::before {
+    @include clear
+  }
+}

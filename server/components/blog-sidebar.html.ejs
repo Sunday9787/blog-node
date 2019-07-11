@@ -1,0 +1,43 @@
+        <section class="col-md-3 col-sm-3 blog-sidebar">
+          <div class="blog-categories margin-bottom-40">
+            <h2><%= categor.name %></h2>
+            <div class="widget-wrap">
+              <div class="widget">
+                <ul class="sidebar-categories">
+                <% categor.item.forEach((item) => { %>
+                  <li><a href="<%= item.link %>"><%= item.name %>(<%= item.total %>)</a></li>
+                <% }) %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="blog-tags margin-bottom-20">
+            <h2 class="margin-bottom-10"><%= tage.name %></h2>
+            <div class="widget-wrap">
+              <div class="widget">
+                <ul class="tag-list">
+                <% tage.item.forEach((item) => { %>
+                  <li class="tag-list-item">
+                    <a href="<%= item.link %>" class="tag-list-link">
+                      <i class="iconfont icon-tage"></i><%= item.name %>
+                    </a>
+                  </li>
+                <% }) %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="recent-news margin-bottom-10">
+            <h2 class="margin-bottom-10"><%= recentNews.name %></h2>
+          <% recentNews.item.forEach((item) => { %>
+            <div class="row margin-bottom-10">
+              <div class="col-md-4">
+                <img src="<%= item.src %>" class="img-responsive">
+              </div>
+              <div class="col-md-8">
+                <h3><a href="<%= item.link %>"><%= item.name %></a></h3>
+              </div>
+            </div>
+          <% }) %>
+          </div>
+        </section>

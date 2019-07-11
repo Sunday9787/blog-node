@@ -1,0 +1,293 @@
+/*
+ * @Author: Edward
+ * @Date: 2018-05-31 20:25:11
+ * @Last Modified by: Edward
+ * @Email: 809537981@qq.com
+ * @Last Modified time: 2018-06-14 00:14:39
+ */
+@charset "utf-8";
+
+@import "./_variables";
+@import "./_mixins";
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.clearfix {
+  &::after, &::before {
+    @include clear
+  }
+}
+
+.pull-right {
+  float: right;
+}
+
+.list-inline {
+  > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+.h1,
+h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.h2,
+h2 {
+  font-size: 26px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.margin-bottom-40 {
+  margin-bottom: 40px;
+}
+
+.image-strip {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+// form 表单
+.form {
+  position: relative;
+
+  &-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    // &:after {
+    //   .clear();
+    // }
+  }
+
+  &-label {
+    float: left;
+    display: block;
+    width: 150px;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  &-label-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &-input-block {
+    margin-left: 150px;
+    height: 30px;
+  }
+}
+
+.input {
+  height: 30px;
+  line-height: 30px;
+}
+
+// 面包屑
+
+.breadcrumb {
+  padding: 0;
+  color: #5f6d7b;
+  margin-bottom: 22px;
+  & li + li::before {
+    content: '\e601';
+    display: inline-block;
+    font-family: 'iconfont';
+    line-height: 1;
+    color: #5f6d7b;
+  }
+  & > ul > li {
+    display: inline-block;
+  }
+  a {
+    color: #5f6d7b;
+  }
+  & .active {
+    color: #e6400c;
+    cursor: default;
+  }
+}
+
+.blog-posts {
+  hr.blog-post-sep {
+    margin: 40px 0;
+  }
+}
+
+.archive {
+  &-article-title {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.blog-item {
+  height: 86px;
+  overflow: hidden;
+}
+
+.blog-info {
+  display: flex;
+  margin: 15px 0 12px 0;
+  li {
+    padding: 0;
+    color: #555;
+    font-size: 13px;
+    margin-right: 13px;
+  }
+}
+
+.blog-tags li i, .blog-info li i {
+  color: #E84D1C;
+}
+
+.sidebar {
+  &-categories {
+    li a {
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid #ECEBEB;
+      color: #333;
+      &:hover {
+        text-decoration: none;
+      }
+      &::before {
+        content: '\e6ae';
+        font-family: 'iconfont';
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+.blog-tags {
+  .tag-list {
+    &-link {
+      position: relative;
+      display: inline-block;
+      padding: 3px 5px 3px 3px;
+      color: #555;
+      background: #f5f5f5;
+    }
+    &-item {
+      display: inline-block;
+      margin: 0 16px 7px 0;
+      a::after {
+        top: 50%;
+        width: 0;
+        left: 100%;
+        height: 0;
+        z-index: 2;
+        content: " ";
+        display: block;
+        margin-top: -14px;
+        position: absolute;
+        border-left: 12px solid #f5f5f5;
+        border-top: 14px solid transparent;
+        border-bottom: 14px solid transparent;
+      }
+      a:hover {
+        color: #fff;
+        background: #E84D1C;
+        &::after {
+          border-left-color: #E84D1C;
+        }
+        i {
+          color: #fff;
+        }
+      }
+    }
+  }
+  i {
+    margin-right: 5px;
+    display: inline-block;
+  }
+}
+
+.recent-news {
+
+}
+
+// 分页
+.pagination {
+  > a, > span {
+    display: inline-block;
+    border-radius: 25px;
+    border: none;
+    color: #868c93;
+    padding: 6px 12px;
+    position: relative;
+    margin-left: -12px;
+    margin-right: 17px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    background-color: #fff;
+  }
+  // > a:first-child ,
+  // > a:last-child {
+  //   padding: 4px 12px 8px;
+  // }
+  > a:hover {
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+  }
+  span {
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+  }
+}
+
+
+// 文章内容页
+
+.article {
+  line-height: 1.8em;
+  &-inner {
+
+  }
+  &-header {
+    .blog-info {
+      margin: 20px 0;
+      padding: 8px 0;
+      border-top: solid 1px #ECEBEB;
+      border-bottom: solid 1px #ECEBEB;
+      > li + li {
+        padding-left: 13px;
+        border-left: solid 1px #ECEBEB;
+      }
+    }
+  }
+  &-category {
+
+  }
+  p {
+    margin: 10px 0;
+  }
+  img {
+    margin: 16px 0;
+  }
+}

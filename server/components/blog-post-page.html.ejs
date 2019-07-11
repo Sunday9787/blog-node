@@ -1,0 +1,43 @@
+        <div class="col-md-9 col-sm-9">
+          <article data-postId="post-2016-01-02-Notes-On-Creating-A-Hexo-Theme" class="article">
+            <!-- <div class="article-meta"></div> -->
+            <div class="article-inner">
+              <header class="article-header">
+                <ul class="blog-info">
+                  <li>
+                    <i class="iconfont icon-date"></i>
+                    <time itemprop="datePublished">2018-06-04 22:14</time>
+                  </li>
+                  <li>
+                    <i class="iconfont icon-comments"></i>
+                    <a href="/">comments</a>
+                  </li>
+                  <li>
+                    <i class="iconfont icon-tage"></i>
+                    <a href="/">Nginx,</a>
+                    <a href="/">Vue全家桶</a>
+                  </li>
+                </ul>
+                <div class="article-category">Category: <a href="/" class="article-category-link">Hexo</a></div>
+              </header>
+              <div class="article-body">
+                <div class="image-strip">
+                  <img src="/images/post_images/hexo.png" alt="">
+                </div>
+                <p>因为 Promise 在插件实例的时候，已经开发执行并发任务了。<br>所以我们没办法在 Promise 实例上做手脚。<br>那么只能在 Promise 实例之前，限制创建 Promise 实例的速度。</p>
+                <p>再有，采取什么形式限制，也是个问题。<br>我一开始想的是队列(queue) 模式。<br>创建一个异步队列类，统一管理异步队列，这样在添加异步任务的方法上做限制即可。</p>
+                <figure class="">
+                  <code class="js">
+                    const q = new Queue(2);
+                    q.push(() => promiseTask());
+                    q.push(() => promiseTask());
+                    q.push(() => promiseTask());
+                    q.all()
+                      .then(arr => console.log(arr))
+                      .catch(err => console.log(err));
+                  </code>
+                </figure>
+              </div>
+            </div>
+          </article>
+        </div>

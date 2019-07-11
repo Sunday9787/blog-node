@@ -1,0 +1,45 @@
+        <div class="col-md-9 col-sm-9 blog-posts">
+          <section class="archives-wrap">
+            <div class="archives">
+            <% post.item.forEach((item) => { %>
+              <div class="row">
+                <div class="col-md-4 col-sm-4">
+                  <img src="<%= item.src %>" class="img-responsive">
+                </div>
+                <div class="col-md-8 col-sm-8">
+                  <h2>
+                    <a class="archive-article-title" href="<%= item.link %>"><%= item.title %></a>
+                  </h2>
+                  <ul class="blog-info">
+                    <li>
+                      <i class="iconfont icon-date"></i>
+                      <time itemprop="datePublished"><%= moment(new Date(item.date)).format('YYYY-MM-DD HH:mm') %></time>
+                    </li>
+                    <li>
+                      <i class="iconfont icon-comments"></i>
+                      <a href="<%= item.link %>">comments</a>
+                    </li>
+                    <li>
+                      <i class="iconfont icon-tage"></i>
+                    <% item.tages.forEach((tage, index, array) => { %>
+                      <a href="<%= tage.link %>"><%= tage.name %><%= (index + 1 !== array.length) ? ',' : ''  %></a>
+                    <% }) %>
+                    </li>
+                  </ul>
+                  <div class="blog-item">
+                    <p><%= item.content %></p>
+                  </div>
+                  <a href="/">阅读更多...</a>
+                </div>
+              </div>
+              <hr class="blog-post-sep">
+            <% }) %>
+            </div>
+            <div id="page-nav" class="pagination">
+              <span class="page-number current">1</span>
+              <a class="page-number" href="/">2</a>
+              <a class="page-number" href="/">3</a>
+              <a class="extend next" rel="next" href="/">下一页</a>
+            </div>
+          </section>
+        </div>

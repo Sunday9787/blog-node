@@ -1,0 +1,5 @@
+node_modules
+.tmp
+dist
+.rpt2_cache
+*.log

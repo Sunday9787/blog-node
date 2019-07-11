@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<% include ../components/head.html.ejs %>
+</head>
+
+<body>
+<% include ../components/header.html.ejs %>
+  <div class="container">
+    <div class="breadcrumb">
+      <ul>
+        <li><a href="/">主页</a></li>
+        <li class="active">文章</li>
+      </ul>
+    </div>
+    <main id="main">
+      <h1>Blog</h1>
+      <div class="row">
+        <!-- blog-posts -->
+<% include ../components/blog-posts.html.ejs %>
+        <!-- blog-sidebar -->
+<% include ../components/blog-sidebar.html.ejs %>
+      </div>
+    </main>
+  </div>
+<% include  ../components/footer.html.ejs %>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Edward 空间, javascript, ES6, node, apache">
+  <meta name="author" content="Edward">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <!-- <link rel="stylesheet" href="/assets/css/bootstrap-reboot.css">
+  <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css"> -->
+  <link rel="stylesheet" href="/assets/css/reboot.min.css">
+  <link rel="stylesheet" href="/assets/css/layout.min.css">
+  <link rel="stylesheet" href="/assets/css/grid.min.css">
+  <link rel="stylesheet" href="/assets/css/cmmon.min.css">
+  <link rel="stylesheet" href="/assets/css/index.min.css">
+  <!-- <%# <link rel="stylesheet" href="/assets/css/default.min.css"> %> -->
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_691652_nz9758ju3z19vn29.css">
+  <script src="/assets/lib/core.js"></script>
+  <script src="/assets/lib/require.js"></script>
+  <script src="/assets/lib/jquery.min.js"></script>
+  <script type="text/javascript">
+    require.config({
+      baseUrl: '/assets/js'
+    })
+  </script>
+  <script>
+    require(['index'], function (index) {
+      var teacher = new index.Teacher('Edward', '22','班主任')
+      window.teacher = teacher
+      console.log(index.values)
+    })
+    var a = 10;
+    do {
+      a--
+      console.log(a)
+    } while (a > 0)
+  </script>
+  <title><%= title %></title>
