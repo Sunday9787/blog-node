@@ -1,11 +1,15 @@
 {
   "ignore": [
     ".git",
+    ".tmp",
+    ".rpt2_cache",
+    ".vscode",
     "node_modules",
-    "web"
+    "dist",
+    "yarn-error.log"
   ],
   "watch": [
     "package.json",
-    "server/*.ts"
+    "server/**/*.ts"
   ]
 }
