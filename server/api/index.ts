@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
+import { mongodb } from '../config';
 
-mongoose.connect('mongodb://localhost:27017', {
+mongoose.connect(mongodb.url, {
   useNewUrlParser: true,
-  dbName: 'blog',
-  user: 'root',
-  pass: '123456',
+  dbName: mongodb.dbName,
+  user: mongodb.user,
+  pass: mongodb.pass,
 });
 
 export function query<T>(model: mongoose.Model<mongoose.Document, {}>): Promise<T> {
