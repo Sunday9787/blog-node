@@ -1,4 +1,4 @@
-import { mergeClass } from '../tools/index'
+import { mergeClass } from '@/tools'
 
 const value = mergeClass(['qdasd','bhvf'])
 
