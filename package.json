@@ -15,7 +15,9 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.0",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "mongodb": "^3.3.0-beta2",
+    "mongoose": "^5.6.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -37,6 +39,8 @@
     "@types/koa-router": "^7.0.42",
     "@types/koa-static": "^4.0.1",
     "@types/koa-views": "^2.0.3",
+    "@types/mongodb": "^3.1.28",
+    "@types/mongoose": "^5.5.9",
     "babel": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "del": "^5.0.0",
