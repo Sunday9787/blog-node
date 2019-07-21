@@ -14,7 +14,7 @@ server.use(async (ctx, next) => {
 })
 
 // 静态资源
-server.use(staticServer(path.join(__dirname, '../dist')));
+server.use(staticServer(path.join(__dirname, '../dist'), { maxAge: 60 * 60 * 24 * 1000 * 7 }));
 
 // 使用模板
 server.use(views(path.join(__dirname, './views'), {
