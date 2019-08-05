@@ -5,7 +5,7 @@
               <div class="widget">
                 <ul class="sidebar-categories">
                 <% categor.item.forEach((item) => { %>
-                  <li><a href="<%= item.link %>"><%= item.name %>(<%= item.total %>)</a></li>
+                  <li><a href="/categor/<%= item.name %>"><%= item.name %>(<%= item.total %>)</a></li>
                 <% }) %>
                 </ul>
               </div>
@@ -18,7 +18,7 @@
                 <ul class="tag-list">
                 <% tag.item.forEach((item) => { %>
                   <li class="tag-list-item">
-                    <a href="<%= item.link %>" class="tag-list-link">
+                    <a href="/tags/<%= item.name %>" class="tag-list-link">
                       <i class="iconfont icon-tage"></i><%= item.name %>
                     </a>
                   </li>

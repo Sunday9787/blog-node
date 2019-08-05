@@ -1,4 +1,4 @@
-        <div class="col-md-9 col-sm-9 blog-posts">
+        <div class="<%= (isCategor ? 'col-xs-12' : 'col-sm-9') %> blog-posts">
           <section class="archives-wrap">
             <div class="archives">
             <% post.item.forEach((item) => { %>
@@ -22,14 +22,14 @@
                     <li>
                       <i class="iconfont icon-tage"></i>
                     <% item.tages.forEach((tage, index, array) => { %>
-                      <a href="<%= tage.link %>"><%= tage.name %><%= (index + 1 !== array.length) ? ',' : ''  %></a>
+                      <a href="/tags/<%= tage %>"><%= tage %><%= (index + 1 !== array.length) ? ',' : ''  %></a>
                     <% }) %>
                     </li>
                   </ul>
                   <div class="blog-item">
                     <p><%= item.content %></p>
                   </div>
-                  <a href="/">阅读更多...</a>
+                  <a href="<%= item.link %>">阅读更多...</a>
                 </div>
               </div>
               <hr class="blog-post-sep">

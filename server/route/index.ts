@@ -14,6 +14,7 @@ router.get('/', async (ctx) => {
 
   await ctx.render('index', {
     title: 'Edward 的空间',
+    isCategor: false,
     categor: {
       name: '分类',
       item: categor
@@ -26,6 +27,34 @@ router.get('/', async (ctx) => {
       name: '标签',
       item: tag,
     },
+    post: {
+      item: post,
+    }
+  });
+})
+
+router.get('/categor/:categor', async (ctx) => {
+  const categor: string = (ctx.params.categor as string).toLowerCase();
+  const post = await modelPost.model.find({ categor });
+
+  await ctx.render('categor/index', {
+    title: 'Edward 的空间',
+    /** 是否是分类页 */
+    isCategor: true,
+    post: {
+      item: post,
+    }
+  });
+})
+
+router.get('/tags/:tag', async (ctx) => {
+  const tages: string = (ctx.params.tag as string).toLowerCase();
+  const post = await modelPost.model.find({ tages });
+
+  await ctx.render('tags/index', {
+    title: 'Edward 的空间',
+    /** 是否是分类页 */
+    isCategor: true,
     post: {
       item: post,
     }
