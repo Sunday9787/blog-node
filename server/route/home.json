@@ -46,8 +46,8 @@
         "link": "/",
         "date": "2016/01/02",
         "tages": [
-          { "name": "gulp", "link": "/" },
-          { "name": "go", "link": "/" }
+          "gulp",
+          "go"
         ],
         "content": "Promise 为 js 的异步流程控制处理迈出了一大步。但我一直没用好错误处理。Promise 为 js 的异步流程控制处理迈出了一大步。但我一直没用好错误处理。"
       },
@@ -57,8 +57,8 @@
         "link": "/",
         "date": "2016/01/02",
         "tages": [
-          { "name": "GO", "link": "/" },
-          { "name": "nginx", "link": "/" }
+          "GO",
+          "nginx"
         ],
         "content": "Top tech talent knows that industry recruiters often bring a stack of pre-negotiated offers to university infosessions, so that they can snag programmers and UX designers who really stand out."
       },
@@ -68,8 +68,8 @@
         "link": "/",
         "date": "2016/01/02",
         "tages": [
-          { "name": "node", "link": "/" },
-          { "name": "vue", "link": "/" }
+          "node",
+          "vue"
         ],
         "content": "Here are some of the resources I found helpful for learning to develop Dynamics NAV web service based applications."
       }

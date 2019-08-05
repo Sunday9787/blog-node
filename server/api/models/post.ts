@@ -15,9 +15,7 @@ const postSchema = new mongoose.Schema<postSchemaMethods>({
   date: String,
   src: String,
   content: String,
-  tages: [
-    { name: String, link: String },
-  ],
+  tages: [String],
 })
 
 interface ResponseQueryPostType {
@@ -27,7 +25,8 @@ interface ResponseQueryPostType {
   date: string;
   src: string;
   content: string;
-  tages: Array<{ name: string, link: string }>,
+  categor: string;
+  tages: Array<string>,
 }
 
 export namespace modelPost {
