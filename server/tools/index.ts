@@ -9,6 +9,9 @@ export function is(type: Types, obj: any) {
 }
 
 interface URLType {
+  /**
+   * 是否返回 首页
+   */
   toHome?: boolean
   /**
    * @example
@@ -19,10 +22,26 @@ interface URLType {
 }
 
 export interface PaginationConfig {
+  /**
+   * 总记录数
+   */
   total: number
+  /**
+   * 当前页码
+   */
   current: number
+  /**
+   * 每页显示条数
+   */
   pageSize?: number
+   /**
+   * 页面中隐藏的页码 最大数量
+   * 左右分别计算
+   */
   perPages?: number
+  /**
+   * 分页跳转的url路径
+   */
   baseURL: URLType | string
 }
 
@@ -59,8 +78,26 @@ export class Pagination {
     this.baseURL = baseURL
   }
 
+  /**
+   *总页数
+   *
+   * @readonly
+   * @memberof Pagination
+   */
   get total_page() {
     return Math.ceil(this.total / this.pageSize);
+  }
+
+  /**
+   * 当前页 数据总数
+   * @readonly
+   * @memberof Pagination
+   */
+  get size() {
+    if (this.current * this.pageSize > this.total) {
+      return this.pageSize - (this.current * this.pageSize - this.total)
+    }
+    return this.pageSize
   }
 
   get showPrevMore() {
