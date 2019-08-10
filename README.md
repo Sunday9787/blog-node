@@ -1,6 +1,8 @@
 # blog-node
 一个node 博客系统
 
+理解一个网站的实现 从 0 到 1
+
 # 启动
 
 ## MongoDB
@@ -23,8 +25,13 @@ mongoimport -d $MONGO_INITDB_DATABASE -c blog_categor --file /docker-entrypoint-
 ```
 
 ## node-blog
+测试环境
 ```bash
 yarn dev
+```
+正式环境
+```bash
+yarn prod
 ```
 
 ## gulp
