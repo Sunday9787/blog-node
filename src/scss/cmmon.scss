@@ -230,37 +230,50 @@ h2 {
 }
 
 // 分页
-.pagination {
-  > a, > span {
+.page {
+
+  &-item {
+    position: relative;
     display: inline-block;
     border-radius: 25px;
-    border: none;
+    border: 0;
     color: #868c93;
     padding: 6px 12px;
-    position: relative;
-    margin-left: -12px;
-    margin-right: 17px;
     line-height: 1.42857143;
     text-decoration: none;
     background-color: #fff;
-  }
-  // > a:first-child ,
-  // > a:last-child {
-  //   padding: 4px 12px 8px;
-  // }
-  > a:hover {
-    color: #23527c;
-    background-color: #eee;
-    border-color: #ddd;
-  }
-  span {
-    color: #fff;
-    cursor: default;
-    background-color: #337ab7;
-    border-color: #337ab7;
+
+    &:hover {
+      color: #23527c;
+      background-color: #eee;
+      border-color: #ddd;
+    }
+
+    &--current {
+      color: #fff;
+      border-color: #337ab7;
+      background-color: #337ab7;
+      &:hover {
+        color: #fff;
+        border-color: #337ab7;
+        background-color: #337ab7;
+      }
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      background-color: #eee;
+      &:hover {
+        color: #868c93;
+        text-decoration: none;
+      }
+    }
+
+    & + & {
+      margin-left: 10px;
+    }
   }
 }
-
 
 // 文章内容页
 
