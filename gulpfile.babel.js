@@ -40,7 +40,7 @@ const buildPath = path.join(__dirname, 'dist', 'assets')
  */
 
 /** 编译 scss */
-gulp.task('sass', () => {
+gulp.task('compresSASS', () => {
   return gulp.src([
     `${basePath}/scss/**/*.scss`,
     `!${basePath}/scss/**/_*.scss`
@@ -84,7 +84,10 @@ gulp.task('CompileTS', () => {
       format: 'amd'
     },
     plugins: [
-      rolluptypescript2({ tsconfig: `${basePath}/tsconfig.json` })
+      rolluptypescript2({
+        tsconfig: `${basePath}/tsconfig.json`,
+        cacheRoot: tmpPath
+      })
     ],
   }))
   .pipe(tsRename(true))
@@ -123,12 +126,21 @@ gulp.task('compresCSS', () => {
 
 /** 压缩JS */
 gulp.task('compresJS', () => {
+  if (isProduction) {
+    return gulp.src([
+      `${basePath}/js/**/*.js`,
+      `${tmpPath}/js/**/*.js`,
+    ])
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(`${buildPath}/js`))
+  }
+
   return gulp.src([
     `${basePath}/js/**/*.js`,
     `${tmpPath}/js/**/*.js`,
+    `${tmpPath}/js/**/*.map`,
   ])
-  .pipe(uglify())
-  .pipe(rename({ suffix: '.min' }))
   .pipe(gulp.dest(`${buildPath}/js`))
 })
 
@@ -136,3 +148,20 @@ gulp.task('compresJS', () => {
 gulp.task('clean', () => {
   return del('.tmp')
 })
+
+gulp.task('default', gulp.series([
+  'clean',
+  gulp.parallel(
+    [
+      gulp.series([
+        'compresSASS',
+        'compresCSS'
+      ]),
+      gulp.series([
+        'CompileTS',
+        'CompileES6',
+        'compresJS'
+      ])
+    ]
+  )
+]))
