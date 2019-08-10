@@ -7,11 +7,20 @@ import path from 'path'
 
 import { Pagination } from './tools'
 
-const server = new Koa()
+type NODE_ENV_TYPE = 'development' | 'production'
+
+interface State {
+  moment: typeof moment
+  Pagination: typeof Pagination
+  NODE_ENV: NODE_ENV_TYPE
+}
+
+const server = new Koa<State>()
 
 server.use(async (ctx, next) => {
   ctx.state.moment = moment;
   ctx.state.Pagination = Pagination
+  ctx.state.NODE_ENV = process.env.NODE_ENV as NODE_ENV_TYPE
   await next();
 })
 

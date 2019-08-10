@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server/index.ts",
+    "dev": "NODE_ENV=development nodemon server/index.ts",
+    "prod": "NODE_ENV=production nodemon server/index.ts",
     "gulp:dev": "NODE_ENV=development gulp",
     "gulp:prod": "NODE_ENV=production gulp"
   },
