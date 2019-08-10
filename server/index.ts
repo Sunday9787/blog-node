@@ -5,16 +5,18 @@ import moment from 'moment'
 import router from './route'
 import path from 'path'
 
+import { Pagination } from './tools'
 
 const server = new Koa()
 
 server.use(async (ctx, next) => {
   ctx.state.moment = moment;
+  ctx.state.Pagination = Pagination
   await next();
 })
 
 // 静态资源
-server.use(staticServer(path.join(__dirname, '../dist'), { maxAge: 60 * 60 * 24 * 1000 * 7 }));
+server.use(staticServer(path.join(__dirname, '../dist'), { maxAge: 0 }));
 
 // 使用模板
 server.use(views(path.join(__dirname, './views'), {
