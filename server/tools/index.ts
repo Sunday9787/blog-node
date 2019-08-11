@@ -95,7 +95,8 @@ export class Pagination {
    */
   get size() {
     if (this.current * this.pageSize > this.total) {
-      return this.pageSize - (this.current * this.pageSize - this.total)
+      const pageSize = this.pageSize - (this.current * this.pageSize - this.total)
+      return pageSize <= 0 ? 0 : pageSize
     }
     return this.pageSize
   }
@@ -119,8 +120,8 @@ export class Pagination {
       left = 2;
     }
 
-    if (this.total_page - this.perPages > this.current) {
-      right = this.total_page - this.perPages;
+    if (this.current + this.perPages < this.total_page ) {
+      right = this.current + this.perPages;
     } else {
       right = this.total_page - 1
     }
