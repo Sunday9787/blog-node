@@ -20,7 +20,8 @@
     require.config({
       baseUrl: '/assets/js',
       paths: {
-        index: 'index'
+        index: 'index',
+        tools: 'tools',
       },
     })
   </script>
@@ -29,7 +30,8 @@
     require.config({
       baseUrl: '/assets/js',
       paths: {
-        index: 'index.min'
+        index: 'index.min',
+        tools: 'tools.min',
       },
     })
   </script>
@@ -45,5 +47,11 @@
       a--
       console.log(a)
     } while (a > 0)
+
+    require(['tools'], function (tools) {
+      var Pagination = new tools.Pagination({ total: 80, current: 2, baseURL: '/page/$pager' })
+      window.Pagination = tools.Pagination
+      console.log(Pagination)
+    })
   </script>
   <title><%= title %></title>
