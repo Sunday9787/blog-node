@@ -115,11 +115,20 @@ gulp.task('CompileES6', () => {
 
 /** 压缩css */
 gulp.task('compresCSS', () => {
+  if (isProduction) {
+    return gulp.src([
+      `${basePath}/css/**/*.css`,
+      `${tmpPath}/css/**/*.css`,
+    ])
+    .pipe(csso())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(`${buildPath}/css`))
+  }
   return gulp.src([
     `${basePath}/css/**/*.css`,
     `${tmpPath}/css/**/*.css`,
+    `${tmpPath}/css/**/*.map`,
   ])
-  .pipe(csso())
   .pipe(rename({ suffix: '.min' }))
   .pipe(gulp.dest(`${buildPath}/css`))
 })
