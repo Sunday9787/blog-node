@@ -15,27 +15,7 @@
   <script src="/assets/lib/core.js"></script>
   <script src="/assets/lib/require.js"></script>
   <script src="/assets/lib/jquery.min.js"></script>
-  <% if (NODE_ENV === 'development') { %>
-  <script type="text/javascript">
-    require.config({
-      baseUrl: '/assets/js',
-      paths: {
-        index: 'index',
-        tools: 'tools',
-      },
-    })
-  </script>
-  <% } else { %>
-  <script type="text/javascript">
-    require.config({
-      baseUrl: '/assets/js',
-      paths: {
-        index: 'index.min',
-        tools: 'tools.min',
-      },
-    })
-  </script>
-  <% } %>
+  <% include ./require.config.html.ejs %>
   <script>
     require(['index'], function (index) {
       var teacher = new index.Teacher('Edward', '22','班主任')

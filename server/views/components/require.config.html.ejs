@@ -1,0 +1,21 @@
+<% if (NODE_ENV === 'development') { %>
+  <script type="text/javascript">
+    require.config({
+      baseUrl: '/assets/js',
+      paths: {
+        index: 'index',
+        tools: 'tools',
+      },
+    })
+  </script>
+<% } else { %>
+  <script type="text/javascript">
+    require.config({
+      baseUrl: '/assets/js',
+      paths: {
+        index: 'index.min',
+        tools: 'tools.min',
+      },
+    })
+  </script>
+<% } %>
