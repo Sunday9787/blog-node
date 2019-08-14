@@ -13,6 +13,18 @@ mongodb://root:123456@localhost:27017
 内含 MongoDB gui 管理平台
 http://localhost:8081/
 
+### 登录MongoDB
+
+```bash
+docker exec -it 容器ID/name bash
+```
+
+```bash
+mongo
+use admin
+db.auth('root', '123456')
+```
+
 ## 初始化数据
 
 ##### 添加初始化数据
