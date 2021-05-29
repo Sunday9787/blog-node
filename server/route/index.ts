@@ -114,4 +114,11 @@ router.get('/tags/:tag', async (ctx) => {
   });
 })
 
+
+router.get('/editor', async (ctx) => {
+  await ctx.render('editor/index', {
+    title: 'Edward 的空间',
+  });
+})
+
 export default router

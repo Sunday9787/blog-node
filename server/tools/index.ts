@@ -188,3 +188,30 @@ export class Pagination {
     return template
   }
 }
+
+type GeneratorAssetsElementType = 'link' | 'script'
+export class GeneratorAssetsElement {
+  public src: string[]
+  public element: GeneratorAssetsElementType
+  constructor(src: string[], element: GeneratorAssetsElementType) {
+    this.src = src
+    this.element = element
+  }
+
+  public format(template: string[]) {
+    return template.join('').replace(',', '\r\n')
+  }
+
+  public render() {
+    switch (this.element) {
+      case 'link':
+        return this.format(this.src.map((src) => {
+          return `<link rel="stylesheet" href="${src}" />`
+        }))
+      case 'script':
+        return this.format(this.src.map((src) => {
+          return `<script src="${src}"></script>`
+        }))
+    }
+  }
+}

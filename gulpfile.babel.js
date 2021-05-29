@@ -129,12 +129,17 @@ gulp.task('compresCSS', () => {
     `${tmpPath}/css/**/*.css`,
     `${tmpPath}/css/**/*.map`,
   ])
-  .pipe(rename({ suffix: '.min' }))
   .pipe(gulp.dest(`${buildPath}/css`))
 })
 
 /** 压缩JS */
-gulp.task('compresJS', () => {
+// gulp.task('compresJS', gulp.parallel([
+//   'compresJS:js',
+//   'compresJS:plugins',
+//   'compresJS:lib'
+// ]))
+
+gulp.task('compresJS:js', () => {
   if (isProduction) {
     return gulp.src([
       `${basePath}/js/**/*.js`,
@@ -153,6 +158,44 @@ gulp.task('compresJS', () => {
   .pipe(gulp.dest(`${buildPath}/js`))
 })
 
+gulp.task('compresJS:plugins', () => {
+  if (isProduction) {
+    return gulp.src([
+      `${basePath}/plugins/**/*.js`,
+      `${tmpPath}/plugins/**/*.js`,
+    ])
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(`${buildPath}/plugins`))
+  }
+
+  return gulp.src([
+    `${basePath}/plugins/**/*.js`,
+    `${tmpPath}/plugins/**/*.js`,
+    `${tmpPath}/plugins/**/*.map`,
+  ])
+  .pipe(gulp.dest(`${buildPath}/plugins`))
+})
+
+gulp.task('compresJS:lib', () => {
+  if (isProduction) {
+    return gulp.src([
+      `${basePath}/lib/**/*.js`,
+      `${tmpPath}/lib/**/*.js`,
+    ])
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(`${buildPath}/lib`))
+  }
+
+  return gulp.src([
+    `${basePath}/lib/**/*.js`,
+    `${tmpPath}/lib/**/*.js`,
+    `${tmpPath}/lib/**/*.map`,
+  ])
+  .pipe(gulp.dest(`${buildPath}/lib`))
+})
+
 /** 清理目录 */
 gulp.task('clean', () => {
   return del('.tmp')
@@ -169,7 +212,11 @@ gulp.task('default', gulp.series([
       gulp.series([
         'CompileTS',
         'CompileES6',
-        'compresJS'
+        gulp.parallel([
+          'compresJS:js',
+          'compresJS:plugins',
+          'compresJS:lib'
+        ])
       ])
     ]
   )
